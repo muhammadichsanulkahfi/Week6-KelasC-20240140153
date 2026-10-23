@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PPAW Week 6 – Fetch API & Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <h1>PPAW Week 6</h1>
+    <p>JavaScript DOM, Event Handling, dan Fetch API</p>
+    <nav>
+      <a href="#produk">Data Produk</a>
+      <a href="#form">Form Pemesanan</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 1. FETCH API -->
+    <section id="produk">
+      <h2>Daftar Produk</h2>
+      <p class="hint">Data diambil dari <code>https://dummyjson.com/products</code></p>
+
+      <div class="toolbar">
+        <label for="search">Cari produk</label>
+        <input type="search" id="search" placeholder="Ketik nama produk…" disabled>
+        <button type="button" id="reload">Muat ulang</button>
+      </div>
+
+      <p id="status" role="status" aria-live="polite"></p>
+      <ul id="product-list" class="product-list"></ul>
+    </section>
+
+    <!-- 2. FORM -->
+    <section id="form">
+      <h2>Form Pemesanan</h2>
+      <p class="hint">Isi data pesanan. Total harga dihitung otomatis saat Anda mengubah input.</p>
+
+      <form id="order-form" novalidate>
+        <div class="field">
+          <label for="nama">Nama lengkap</label>
+          <input type="text" id="nama" name="nama" autocomplete="name">
+          <small class="error" id="err-nama"></small>
+        </div>
+
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <small class="error" id="err-email"></small>
+        </div>
+
+        <div class="field">
+          <label for="paket">Paket</label>
+          <select id="paket" name="paket">
+            <option value="">Pilih paket…</option>
+            <option value="50000">Basic – Rp50.000</option>
+            <option value="120000">Standar – Rp120.000</option>
+            <option value="250000">Premium – Rp250.000</option>
+          </select>
+          <small class="error" id="err-paket"></small>
+        </div>
+
+        <div class="field">
+          <label for="jumlah">Jumlah (1–10)</label>
+          <input type="number" id="jumlah" name="jumlah" min="1" max="10" value="1">
+          <small class="error" id="err-jumlah"></small>
+        </div>
+
+        <div class="field">
+          <label for="catatan">Catatan <span class="muted">(opsional)</span></label>
+          <textarea id="catatan" name="catatan" rows="3" maxlength="100"></textarea>
+          <small class="muted" id="counter">0 / 100 karakter</small>
+        </div>
+
+        <p class="total">Total: <strong id="total">Rp0</strong></p>
+
+        <div class="actions">
+          <button type="submit">Kirim pesanan</button>
+          <button type="button" id="reset" class="secondary">Kosongkan</button>
+        </div>
+      </form>
+
+      <div id="result" class="result" role="status" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <footer>PPAW Week 6 – Tugas Individu</footer>
+  <script src="script.js"></script>
+</body>
+</html>
